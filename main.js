@@ -6,7 +6,7 @@ const nameInput = document.querySelector("#name");
 const emailInput = document.querySelector("#email");
 const items = document.querySelector(".items");
 const body = document.querySelector("body");
-const erroMessage = document.querySelector (".msg");
+const erroMessage = document.querySelector(".msg");
 
 
 submitButton.addEventListener("click", function (e) {
@@ -19,22 +19,30 @@ submitButton.addEventListener("click", function (e) {
     if (nameValue === "" || emailValue === "") {
         erroMessage.textContent = "digite os dados";
         erroMessage.classList = "error";
-        return
-    }
+        
+        setTimeout (() => {
+        erroMessage.textContent = "";
+        erroMessage.classList = "";
+    }, 3000);
+    return;
+}
+
 const li = document.createElement("li");
 li.classList = "item";
-li.textContent = `Nome: ${nameValue}`;
+li.innerHTML = `Nome: ${nameValue} <br>Email: ${emailValue}`;
 
 items.appendChild(li);
+nameInput.value = "";
+emailInput.value = "";
 
-    //formulario fica vermelho quando está válido
-    myForm.style.background = "pink";
+//formulario fica vermelho quando está válido
+myForm.style.background = "pink";
 
-    //muda a cor de fundo caso seja aceite os valores
-    body.style.background = "orange";
+//muda a cor de fundo caso seja aceite os valores
+body.style.background = "orange";
 
-    submitButton.style.background = "green";
-    submitButton.style.color = "writh"
+submitButton.style.background = "green";
+submitButton.style.color = "writh"
 
     //muda o item com os valores acrescentados
  
