@@ -1,31 +1,32 @@
 window.console.log("eu sou o console")
 
 const submitButton = document.querySelector("#submit-button");
-
-
 const myForm = document.querySelector("#my-form");
-
 const nameInput = document.querySelector("#name");
 const emailInput = document.querySelector("#email");
-
 const items = document.querySelector(".items");
 const body = document.querySelector("body");
+const erroMessage = document.querySelector (".msg");
 
 
 submitButton.addEventListener("click", function (e) {
     e.preventDefault(); //impede o comportamento padrão
-
-    
 
     const nameValue = nameInput.value; //pega os valores colocado no input
     const emailValue = emailInput.value;
 
     //se esses valores não tiverem preenchidos
     if (nameValue === "" || emailValue === "") {
-        return alert("Please fill out all the fields!"); //prencha todos os campos
+        erroMessage.textContent = "digite os dados";
+        erroMessage.classList = "error";
+        return
     }
+const li = document.createElement("li");
+li.classList = "item";
+li.textContent = `Nome: ${nameValue}`;
 
- 
+items.appendChild(li);
+
     //formulario fica vermelho quando está válido
     myForm.style.background = "pink";
 
@@ -36,7 +37,7 @@ submitButton.addEventListener("click", function (e) {
     submitButton.style.color = "writh"
 
     //muda o item com os valores acrescentados
-    items.children[0].textContent = nameValue;
+ 
 
 });
 
